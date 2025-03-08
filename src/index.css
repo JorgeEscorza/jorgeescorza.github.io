@@ -17,25 +17,12 @@ body {
 }
 
 .back-vid {
+    background-color: black;
     position: fixed;
     right: 0;
     bottom: 0;
     z-index: -1;
     mix-blend-mode: overlay;
-}
-
-@media (max-aspect-ratio: 16/9){
-    .back-vid {
-        width: auto;
-        height: 100%;
-    }
-}
-
-@media (min-aspect-ratio: 16/9){
-    .back-vid {
-        width: 100%;
-        height: auto;
-    }
 }
 
 header {
@@ -118,6 +105,7 @@ header ul a {
 }
 
 .headerVideo-box video {
+    background-color: black;
     width: 100%;
     margin-top: -23.5%;
 }
@@ -188,8 +176,123 @@ header ul a {
 
 .hero-info i {
     font-size: 1.5em;
-    transform: translateY(2px);
+    /*transform: translateY(2px);*/
 }
+
+.menu-icon{
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+    display: none;
+}
+
+/* Fade in Effect */
+.hidden {
+    opacity: 1;
+    transition: opacity 0.5s ease-out;
+  }
+
+/* Fade out Effect */
+.hidden {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+  }
+
+/* Sidebar for mobile users */
+.sidebar{
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 70%;
+    width: 0%;
+    background-color: rgba(0, 0, 0, 0.544);
+    backdrop-filter: blur(10px);
+    z-index: 999;
+    box-shadow: 0 0 30px 10px rgba(68, 0, 255, 0.566);
+    border-bottom-left-radius: 100%;
+    opacity: 0;
+    display: none;
+}
+
+.close-icon{
+    color: white;
+    font-size: 50px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+
+.sidebar ul{
+    padding-left: 20px;
+}
+
+.sidebar ul li{
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.sidebar ul li a{
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    color: lightgray;
+    font-size: 30px;
+    font-weight: 700;
+    text-shadow: 0 0 15px rgba(128, 128, 128, 0.253);
+}
+
+.sidebar .social-icons{
+    padding-left: 20px;
+    margin-top: 60px;
+    text-wrap: nowrap;
+}
+
+.sidebar .social-icons a{
+    text-decoration: none;
+    color: lightgray;
+    font-size: 35px;
+    padding: 5px 5px;
+    cursor: pointer;
+    
+}
+
+/* Se muestra solo cuando tiene una de las clases activas */
+.open-sidebar, .close-sidebar {
+    display: block;
+}
+
+/* Open Sidebar Animation */
+.open-sidebar{
+    animation: openSidebarAnimation 1.5s forwards;
+}
+
+@keyframes openSidebarAnimation{
+    to {
+        width: 80%;
+        opacity: 1;
+        bottom: 0;
+        border-radius: 0;
+    }
+}
+
+/* Close Sidebar Animation */
+.close-sidebar{
+    animation: closeSidebarAnimation 1.5s forwards;
+}
+
+@keyframes closeSidebarAnimation{
+    from {
+        width: 80%;
+        opacity: 1;
+        bottom: 0;
+        border-radius: 0;
+    }
+    to {
+        width: 0;
+        opacity: 0;
+        bottom: 70%;
+        border-bottom-left-radius: 100%;
+    }
+}
+
 
 /* Gradient animation */
 .gradient {
@@ -213,4 +316,90 @@ header ul a {
     to {
         background-position: 200%;
     }
+}
+
+@media (max-aspect-ratio: 16/9){
+    .back-vid {
+        width: auto;
+        height: 100%;
+    }
+}
+
+@media (min-aspect-ratio: 16/9){
+    .back-vid {
+        width: 100%;
+        height: auto;
+    }
+}
+
+/* TABLET RESPONSIVE */
+@media screen and (max-width: 1000px){
+    .headerVideo-box video{
+        margin-top: -20%;
+    }
+
+    .hero-info p{
+        max-width: 300px;
+    }
+
+    header li{
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width: 940px){
+    header li a{
+        margin: 0 0px;
+    }
+}
+
+/* MOBILE RESPONSIVE */
+@media screen and (max-width: 700px){
+    header {
+        position: fixed;
+        height: 50px;
+    }
+
+    header ul{
+        display: none;
+    }
+
+    header .box-icons{
+        display: none;
+    }
+
+    header h1{
+        font-size: 25px;
+    }
+
+    .headerVideo-box video{
+        display: none;
+    }
+
+    .hero{
+        flex-direction: column;
+    }
+
+    .hero-info{
+        bottom: 5%;
+    }
+
+    .hero-info h1{
+        line-height: 50px;
+        font-size: 50px;
+        max-width: 95%;
+    }
+
+    .hero-info .subtitle{
+        font-size: 30px;
+    }
+
+    .hero-info p{
+        max-width: 90%;
+    }
+
+    .menu-icon{
+        display: inline;
+    }
+    
 }
